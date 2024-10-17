@@ -7,6 +7,80 @@
     <title>SaldoSeguro</title>
 </head>
 <body>
+    <section class="flex space-x-12">
+        <div class="w-96 h-96">
+            <canvas id="myChart1"></canvas>
+        </div>
+        <div class="w-96 h-96">
+            <canvas id="myChart2"></canvas>
+        </div>
+    </section>
     
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // vendas/custos
+        let vendasAgosto = 10000;
+        let custoAgosto = 4760;
+
+        let vendasSetembro = 10000;
+        let custoSetembro = 3060;
+
+        let vendasOutubro = 10000;
+        let custoOutubro = 5090;
+
+        // logica de lucro
+        let lucroAgosto = vendasAgosto - custoAgosto;
+        let lucroSetembro = vendasSetembro - custoSetembro;
+        let lucroOutubro = vendasOutubro - custoOutubro;
+
+
+        // set values
+        let agosto = lucroAgosto;
+        let setembro = lucroSetembro;
+        let outubro = lucroOutubro;
+
+        const ctx1 = document.getElementById('myChart1');
+        new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: ['Agosto', 'Setembro', 'Outubro'],
+            datasets: [{
+            label: 'LUCRO DO MÊS',
+            data: [agosto, setembro, outubro],
+            borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+            y: {
+                beginAtZero: true
+            }
+            }
+        }
+        });
+        const ctx2 = document.getElementById('myChart2');
+        new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['Agosto', 'Setembro', 'Outubro'],
+            datasets: [{
+            label: 'CUSTOS DO MÊS',
+            data: [custoAgosto, custoSetembro, custoOutubro],
+            borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+            y: {
+                beginAtZero: true
+            }
+            }
+        }
+        });
+
+    </script>
+
 </body>
 </html>
